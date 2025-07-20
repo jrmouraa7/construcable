@@ -1,0 +1,185 @@
+/* Reset e básico */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+  background: #1c1c1c;
+  color: #eee;
+}
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #2a2a2a;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ff0000a0;
+}
+.logo {
+  font-weight: 900;
+  font-size: 3rem;
+  text-align: center;
+  color: #ff0000;
+  letter-spacing: 4px;
+  text-shadow: 0 0 15px #ff0000aa;
+  margin-bottom: 30px;
+  user-select: none;
+}
+h2 {
+  color: #ff4444;
+  border-bottom: 2px solid #ff0000;
+  padding-bottom: 8px;
+}
+form input[type="text"],
+form input[type="password"],
+form input[type="number"],
+form select,
+form input[type="file"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+form button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+.primary-btn {
+  background-color: #ff0000;
+  color: white;
+}
+.primary-btn:hover {
+  background-color: #cc0000;
+}
+.secondary-btn {
+  background-color: #444;
+  color: #eee;
+  margin-left: 10px;
+}
+.secondary-btn:hover {
+  background-color: #222;
+}
+.error-msg {
+  color: #f33;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+.success-msg {
+  color: #4caf50;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.hidden {
+  display: none !important;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #444;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #ff0000;
+}
+.status-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.status-dot.online {
+  background-color: #4caf50;
+}
+.status-dot.offline {
+  background-color: #999;
+}
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tab-btn {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 6px;
+  background: #333;
+  color: #eee;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+.tab-btn.active, .tab-btn:hover {
+  background-color: #ff0000;
+  color: white;
+}
+.admin-only {
+  display: none;
+}
+main {
+  background: #222;
+  padding: 15px;
+  border-radius: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1e1e1e;
+}
+thead tr {
+  background: #ff0000;
+  color: #fff;
+}
+tbody tr:nth-child(even) {
+  background: #2a2a2a;
+}
+tbody tr:nth-child(odd) {
+  background: #242424;
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+button.action-btn {
+  background: #ff0000;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+button.action-btn:hover {
+  background: #cc0000;
+}
+img.solicitacao-foto {
+  max-width: 60px;
+  max-height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #ff0000;
+}

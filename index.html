@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CONSTRUCABLE - Sistema de Solicitação</title>
+<link rel="stylesheet" href="style.css" />
+<!-- jsPDF para geração de PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div id="login-screen" class="container">
+    <h1 class="logo">CONSTRUCABLE</h1>
+    <form id="login-form">
+      <input type="text" id="login-username" placeholder="Login" required autocomplete="off" />
+      <input type="password" id="login-password" placeholder="Senha" required autocomplete="off" />
+      <button type="submit" class="btn primary-btn">Entrar</button>
+    </form>
+    <p id="login-error" class="error-msg"></p>
+  </div>
+
+  <div id="app-screen" class="container hidden">
+    <header>
+      <div class="profile-info">
+        <div id="profile-pic" class="profile-pic"></div>
+        <div>
+          <strong id="profile-name"></strong>
+          <span id="profile-status" class="status-dot offline"></span>
+        </div>
+      </div>
+      <button id="logout-btn" class="btn secondary-btn">Sair</button>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="solicitacao-tab">Solicitar Material</button>
+      <button class="tab-btn" data-tab="historico-tab">Histórico</button>
+      <button class="tab-btn admin-only" data-tab="materiais-tab">Materiais</button>
+      <button class="tab-btn admin-only" data-tab="aprovacoes-tab">Aprovações</button>
+      <button class="tab-btn admin-only" data-tab="usuarios-tab">Usuários</button>
+    </nav>
+
+    <main>
+      <!-- Solicitação -->
+      <section id="solicitacao-tab" class="tab-content active">
+        <h2>Nova Solicitação</h2>
+        <form id="solicitacao-form">
+          <label for="material-select">Material:</label>
+          <select id="material-select" required></select>
+
+          <label for="quantidade-input">Quantidade:</label>
+          <input type="number" id="quantidade-input" min="1" required />
+
+          <label for="foto-anexo">Anexar Foto (opcional):</label>
+          <input type="file" id="foto-anexo" accept="image/*" capture="environment" />
+
+          <button type="submit" class="btn primary-btn">Enviar Solicitação</button>
+        </form>
+        <p id="solicitacao-msg" class="success-msg"></p>
+      </section>
+
+      <!-- Histórico -->
+      <section id="historico-tab" class="tab-content">
+        <h2>Histórico de Solicitações</h2>
+        <table id="historico-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Material</th>
+              <th>Quantidade</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Materiais (Admin) -->
+      <section id="materiais-tab" class="tab-content">
+        <h2>Cadastro e Edição de Materiais</h2>
+        <form id="material-form">
+          <input type="hidden" id="material-id" />
+          <input type="text" id="material-nome" placeholder="Nome do material" required />
+          <input type="number" id="material-quantidade" placeholder="Quantidade em estoque" min="0" required />
+          <button type="submit" class="btn primary-btn">Salvar Material</button>
+          <button type="button" id="material-cancel-btn" class="btn secondary-btn hidden">Cancelar</button>
+        </form>
+        <table id="materiais-table">
+          <thead>
+            <tr><th>Nome</th><th>Estoque</th><th>Ações</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Aprovações (Admin) -->
+      <section id="aprovacoes-tab" class="tab-content">
+        <h2>Aprovações de Solicitações</h2>
+        <table id="aprovacoes-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Técnico</th>
+              <th>Material</th>
+              <th>Quantidade</th>
+              <th>Foto</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Usuários (Admin) -->
+      <section id="usuarios-tab" class="tab-content">
+        <h2>Gerenciar Usuários</h2>
+        <form id="usuario-form">
+          <input type="hidden" id="usuario-id" />
+          <input type="text" id="usuario-nome" placeholder="Nome completo" required />
+          <input type="text" id="usuario-login" placeholder="Login" required autocomplete="off" />
+          <input type="password" id="usuario-senha" placeholder="Senha" required autocomplete="off" />
+          <select id="usuario-perfil" required>
+            <option value="" disabled selected>Perfil</option>
+            <option value="admin">Administrador</option>
+            <option value="tecnico">Técnico</option>
+          </select>
+          <button type="submit" class="btn primary-btn">Salvar Usuário</button>
+          <button type="button" id="usuario-cancel-btn" class="btn secondary-btn hidden">Cancelar</button>
+        </form>
+        <table id="usuarios-table">
+          <thead>
+            <tr><th>Nome</th><th>Login</th><th>Perfil</th><th>Ações</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
